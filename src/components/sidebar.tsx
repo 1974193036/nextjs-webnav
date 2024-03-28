@@ -24,7 +24,7 @@ export function Sidebar({ className, navItems }: SidebarProps) {
         className="flex-col items-center justify-center hidden h-16 mx-6 sm:flex"
       >
         <Image
-          src="https://cos.codefe.top/images/web-nav-icon.png"
+          src="/images/web-nav-icon.png"
           alt=""
           width={200}
           height={60}
