@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import '@/styles/globals.css'
 import { cn } from '@/lib/utils'
 import { fontSans } from '@/lib/fonts'
@@ -12,9 +12,12 @@ export const metadata: Metadata = {
     'Beautifully designed components built with Radix UI and Tailwind CSS',
   icons: {
     icon: '/favicon.ico'
-  },
+  }
+}
+
+export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: light)', color: 'cyan' },
     { media: '(prefers-color-scheme: dark)', color: 'black' }
   ]
 }
