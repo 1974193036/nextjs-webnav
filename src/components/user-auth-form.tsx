@@ -13,6 +13,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/icons'
 import { useToast } from '@/components/ui/use-toast'
+import { registerApi } from '@/actions'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   type: 'login' | 'register'
@@ -62,16 +63,22 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
       // router.refresh()
       // router.push('/')
     } else {
-      const res = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email.toLowerCase(),
-          password: password
-        })
+      // const res = await fetch('/api/register', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     email: email.toLowerCase(),
+      //     password: password
+      //   })
+      // })
+      // 客户端组件中调用服务器api
+      const res = await registerApi({
+        email,
+        password
       })
+      // console.log(res)
       if (res.status === 200) {
         toast({
           title: '注册成功',

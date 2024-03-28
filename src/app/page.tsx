@@ -2,11 +2,11 @@ import { SiteHeader } from '@/components/site-header'
 import { Sidebar } from '@/components/sidebar'
 import { SiteFooter } from '@/components/site-footer'
 import { LinkContent } from '@/components/link-content'
-import { getCategorys } from '@/actions'
+import { getCategorysApi } from '@/actions'
 
 export default async function HomePage() {
-  const dataSource = await getCategorys()
-  // console.log(dataSource)
+  const dataSource = await getCategorysApi()
+  console.log(dataSource)
 
   const navItems = dataSource.map((n) => {
     return {
