@@ -76,6 +76,14 @@
   }
 }
 
+.success-toast {
+  @apply bg-green-700 text-white;
+}
+
+.error-toast {
+  @apply bg-red-700 text-white;
+}
+
 
 ::view-transition-old(root),
 ::view-transition-new(root) {

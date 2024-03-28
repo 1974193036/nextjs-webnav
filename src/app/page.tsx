@@ -6,7 +6,7 @@ import { getCategorys } from '@/actions'
 
 export default async function HomePage() {
   const dataSource = await getCategorys()
-  console.log(dataSource)
+  // console.log(dataSource)
 
   const navItems = dataSource.map((n) => {
     return {
