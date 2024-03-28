@@ -5,6 +5,7 @@ import { fontSans } from '@/lib/fonts'
 import { Toaster } from '@/components/ui/toaster'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { ThemeProvider } from '@/components/theme-provider'
+import Providers from './providers'
 
 export const metadata: Metadata = {
   title: 'Next.js',
@@ -33,9 +34,11 @@ export default function RootLayout({
         className={cn('min-h-screen font-sans antialiased', fontSans.variable)}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-          <TailwindIndicator />
-          <Toaster />
+          <Providers>
+            {children}
+            <TailwindIndicator />
+            <Toaster />
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

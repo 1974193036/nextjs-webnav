@@ -1,4 +1,4 @@
-import { Category, Link } from '@prisma/client'
+import { Category, Link, User } from '@prisma/client'
 
 declare global {
   interface NavItem {
@@ -14,4 +14,6 @@ declare global {
   }
 
   type SiteLink = Link
+
+  type UserModel = User
 }

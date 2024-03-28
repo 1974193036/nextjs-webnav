@@ -1,7 +1,6 @@
-// 'use client'
+'use client'
 
-// import { User } from 'next-auth'
-// import { signOut } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 
 import {
   DropdownMenu,
@@ -12,16 +11,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { UserAvatar } from '@/components/user-avatar'
 
-// interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
-//   user: Pick<User, 'name' | 'image' | 'email'>
-// }
-
-interface UserAccountNavProps {
-  user: {
-    name?: string
-    image?: string
-    email?: string
-  }
+interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
+  user: Partial<Pick<UserModel, 'name' | 'image' | 'email'>>
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
@@ -50,9 +41,9 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           onSelect={(event: any) => {
             event.preventDefault()
             console.log('退出登录', `${window.location.origin}/login`)
-            // signOut({
-            //   callbackUrl: `${window.location.origin}/login`
-            // })
+            signOut({
+              callbackUrl: `${window.location.origin}/login`
+            })
           }}
         >
           退出登录

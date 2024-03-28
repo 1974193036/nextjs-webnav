@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { z } from 'zod'
 import { cn } from '@/lib/utils'
@@ -34,34 +34,35 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
   const [isGitHubLoading, setIsGitHubLoading] = useState(false)
+  const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false)
 
   const onSubmit = async (data: FormData) => {
     setIsLoading(true)
 
     const { email, password } = data
     if (type === 'login') {
-      // const signInResult = await signIn("credentials", {
-      //   email: email.toLowerCase(),
-      //   password: password,
-      //   redirect: false,
-      //   callbackUrl: searchParams?.get("from") || "/",
-      // })
-      // if (signInResult?.error) {
-      //   setIsLoading(false);
-      //   return toast({
-      //     title: "Something went wrong.",
-      //     description: signInResult?.error,
-      //     variant: "destructive",
-      //   })
-      // }
-      // toast({
-      //   title: 'Image uploaded successfully',
-      //   description: '1 credit was deducted from your account',
-      //   duration: 500000,
-      //   className: 'success-toast'
-      // })
-      // router.refresh()
-      // router.push('/')
+      const signInResult = await signIn('credentials', {
+        email: email.toLowerCase(),
+        password: password,
+        redirect: false,
+        callbackUrl: '/'
+      })
+      if (signInResult?.error) {
+        setIsLoading(false)
+        return toast({
+          title: 'Something went wrong.',
+          description: signInResult?.error,
+          variant: 'destructive'
+        })
+      }
+      toast({
+        title: '登录成功',
+        description: '1 credit was deducted from your account',
+        duration: 2000,
+        className: 'success-toast'
+      })
+      router.refresh()
+      router.push('/')
     } else {
       // const res = await fetch('/api/register', {
       //   method: 'POST',
@@ -155,6 +156,56 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
           </Button>
         </div>
       </form>
+
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            Or continue with
+          </span>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <Button
+          type="button"
+          variant='outline'
+          onClick={() => {
+            setIsGitHubLoading(true)
+            signIn('github', {
+              callbackUrl: '/'
+            })
+          }}
+          disabled={isLoading || isGitHubLoading}
+        >
+          {isGitHubLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.gitHub className="mr-2 h-4 w-4" />
+          )}{' '}
+          Github
+        </Button>
+        <Button
+          type="button"
+          variant='outline'
+          onClick={() => {
+            setIsGoogleLoading(true)
+            signIn('google', {
+              callbackUrl:  '/'
+            })
+          }}
+          disabled={isLoading || isGoogleLoading}
+        >
+          {isGoogleLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.google className="mr-2 h-4 w-4" />
+          )}{' '}
+          Google
+        </Button>
+      </div>
     </div>
   )
 }

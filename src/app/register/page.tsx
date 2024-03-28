@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/icons'
 import { UserAuthForm } from '@/components/user-auth-form'
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center -mt-10">
       <Button asChild variant="ghost">

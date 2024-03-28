@@ -1,2 +1,1 @@
-// export { GET, POST } from '@/auth'
-export function POST() {}
+export { GET, POST } from '@/lib/auth'
