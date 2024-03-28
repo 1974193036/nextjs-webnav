@@ -42,12 +42,12 @@ export function MainNav({ items, navItems }: MainNavProps) {
           </nav>
         ) : null}
       </div>
-      {showMobileSidebar && (
-        <MobileSidebar
-          navItems={navItems}
-          setShowMobileSidebar={setShowMobileSidebar}
-        />
-      )}
+
+      <MobileSidebar
+        navItems={navItems}
+        showMobileSidebar={showMobileSidebar}
+        setShowMobileSidebar={setShowMobileSidebar}
+      />
     </>
   )
 }

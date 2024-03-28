@@ -25,7 +25,7 @@ export function Sidebar({ className, navItems }: SidebarProps) {
   }, [activeTabId])
 
   return (
-    <nav className="after:h-[calc(100vh - 65px)] block min-h-screen w-60 flex-row flex-nowrap font-semibold bg-background sm:px-6 sm:pb-6">
+    <nav className="after:h-[calc(100vh - 65px)] block min-h-screen w-60 flex-row flex-nowrap font-semibold bg-background px-6 sm:pb-6">
       <a
         href=""
         className="flex-col items-center justify-center hidden h-16 mx-6 sm:flex"
