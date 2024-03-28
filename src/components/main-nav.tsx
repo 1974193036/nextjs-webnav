@@ -7,7 +7,7 @@ import { MobileSidebar } from '@/components/mobile-sidebar'
 
 interface MainNavProps {
   items?: NavItem[]
-  navItems: NavItems
+  navItems: SidebarProps['navItems']
 }
 
 export function MainNav({ items, navItems }: MainNavProps) {

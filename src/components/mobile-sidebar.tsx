@@ -1,10 +1,9 @@
-// import { Category } from "@prisma/client"
 import { Sidebar } from './sidebar'
 import { cn } from '@/lib/utils'
 
-interface SidebarProps {
+interface MobileSidebarProps {
   className?: string
-  navItems: NavItems
+  navItems: SidebarProps['navItems']
   setShowMobileSidebar: Function
   showMobileSidebar: boolean
 }
@@ -13,7 +12,7 @@ export function MobileSidebar({
   navItems,
   showMobileSidebar,
   setShowMobileSidebar
-}: SidebarProps) {
+}: MobileSidebarProps) {
   return (
     <>
       <div

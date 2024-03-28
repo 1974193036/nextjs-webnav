@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-// import { Category } from "@prisma/client"
-
 import { cn } from '@/lib/utils'
-
-export interface SidebarProps {
-  className?: string
-  navItems: NavItems
-}
 
 export function Sidebar({ className, navItems }: SidebarProps) {
   const [activeTabId, setActiveTabId] = useState(navItems[0].id)
@@ -58,7 +51,7 @@ export function Sidebar({ className, navItems }: SidebarProps) {
                           <div className="relative flex shrink-0">
                             <Image
                               src={category.icon}
-                              alt=""
+                              alt={category.title}
                               className="block"
                               width={20}
                               height={20}

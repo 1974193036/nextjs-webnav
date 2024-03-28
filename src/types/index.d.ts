@@ -1,17 +1,15 @@
-interface NavItem {
-  title: string
-  href?: string
-  disabled?: boolean
-  external?: boolean
-}
+import { Category } from '@prisma/client'
 
-type NavItems = {
-  id: string
-  title: string
-  icon: string
-}[]
+declare global {
+  interface NavItem {
+    title: string
+    href?: string
+    disabled?: boolean
+    external?: boolean
+  }
 
-interface SidebarProps {
-  className?: string
-  navItems: NavItems
+  interface SidebarProps {
+    className?: string
+    navItems: Pick<Category, 'title' | 'icon' | 'id'>[]
+  }
 }
