@@ -6,6 +6,7 @@ import { getCategorys } from '@/actions'
 
 export default async function HomePage() {
   const dataSource = await getCategorys()
+  console.log(dataSource)
 
   const navItems = dataSource.map((n) => {
     return {
@@ -23,7 +24,7 @@ export default async function HomePage() {
         </div>
         <div className="sm:pl-[16rem] w-full">
           <SiteHeader navItems={navItems} />
-          <LinkContent />
+          <LinkContent source={dataSource} />
           <SiteFooter />
         </div>
       </div>

@@ -31,7 +31,9 @@ export async function SiteHeader({ navItems }: SidebarProps) {
               </Link>
             </Button>
           </nav>
+
           <ThemeToggle />
+
           {user ? (
             <UserAccountNav user={user} />
           ) : (

@@ -1,6 +1,6 @@
 export function SiteFooter() {
   return (
-    <div className="fixed bottom-0 mx-auto w-full text-sm md:px-6">
+    <div className="fixed bottom-0 mx-auto w-full text-sm md:px-6 bg-background">
       <footer className="block py-4">
         <div className="mx-auto">
           <hr className="border-b-1 mb-4 border-gray-200" />
